@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gd:structuredPostalAddress rel="http://schemas.google.com/g/2005#work">
+  <gd:street>1600 Amphitheatre Parkway</gd:street>
+  <gd:city>Mountain View</gd:city>
+  <gd:postcode>94043</gd:postcode>
+  <gd:country code="US">U.S.A.</gd:country>
+</gd:structuredPostalAddress>
