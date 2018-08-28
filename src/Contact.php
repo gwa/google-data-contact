@@ -46,7 +46,7 @@ class Contact
      * @param string $givenName
      * @param string $additionalName
      *
-     * @return self
+     * @return Name
      */
     public function setName($familyName, $givenName, $additionalName = '')
     {
@@ -58,7 +58,7 @@ class Contact
             $this->name()->setAdditionalName($additionalName);
         }
 
-        return $this;
+        return $this->name();
     }
 
     /**
@@ -95,7 +95,7 @@ class Contact
      * @param string $type
      * @param boolean $primary
      *
-     * @return self
+     * @return Email
      */
     public function addEmail($address, $type = '', $primary = false)
     {
@@ -104,15 +104,26 @@ class Contact
         $this->handleTypedPrimary($email, $type, $primary);
         $this->emails[] = $email;
 
-        return $this;
+        return $email;
     }
 
     /**
-     * @param string $address
+     * @param int $index
+     * @return Email|NULL
+     */
+    public function email($index)
+    {
+        return array_key_exists($index, $this->emails) ?
+            $this->emails[$index] :
+            null;
+    }
+
+    /**
+     * @param string $number
      * @param string $type
      * @param boolean $primary
      *
-     * @return self
+     * @return PhoneNumber
      */
     public function addPhoneNumber($number, $type = '', $primary = false)
     {
@@ -121,7 +132,18 @@ class Contact
         $this->handleTypedPrimary($phonenumber, $type, $primary);
         $this->phoneNumbers[] = $phonenumber;
 
-        return $this;
+        return $phonenumber;
+    }
+
+    /**
+     * @param int $index
+     * @return PhoneNumber|NULL
+     */
+    public function phoneNumber($index)
+    {
+        return array_key_exists($index, $this->phoneNumbers) ?
+            $this->phoneNumbers[$index] :
+            null;
     }
 
     /**
@@ -129,7 +151,7 @@ class Contact
      * @param string $type
      * @param boolean $primary
      *
-     * @return self
+     * @return PostalAddress
      */
     public function addAddress($street, $type = '', $primary = false)
     {
@@ -140,6 +162,17 @@ class Contact
         $this->addresses[] = $address;
 
         return $address;
+    }
+
+    /**
+     * @param int $index
+     * @return PostalAddress|NULL
+     */
+    public function address($index)
+    {
+        return array_key_exists($index, $this->addresses) ?
+            $this->addresses[$index] :
+            null;
     }
 
     /**

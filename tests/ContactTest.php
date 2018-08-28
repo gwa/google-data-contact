@@ -27,16 +27,27 @@ final class ContactTest extends TestCase
     public function testRender()
     {
         $contact = new Contact();
-        $contact->setName('Doe', 'John');
+        $contact->setName('Doe', 'John')
+            ->setNamePrefix('Dr.')
+            ->setNameSuffix('MD');
         $contact->setNote('Lorem ipsum');
-        $contact->addEmail('doe@example.org', 'home', true);
-        $contact->addEmail('doe@example.com');
-        $contact->addPhoneNumber('012 3456 789', 'home', true);
+        $email0 = $contact->addEmail('doe@example.org', 'home', true);
+        $email1 = $contact->addEmail('doe@example.com');
+        $phonenumber0 = $contact->addPhoneNumber('012 3456 789', 'home', true);
 
-        $contact->addAddress('1600 Amphitheatre Parkway', 'work', true)
+        $address0 = $contact->addAddress('1600 Amphitheatre Parkway', 'work', true)
             ->setCity('Mountain View')
             ->setRegion('California')
             ->setCountry('U.S.A.', 'US');
+
+        $this->assertSame($email0, $contact->email(0));
+        $this->assertSame($email1, $contact->email(1));
+        $this->assertNull($contact->email(2));
+
+        $this->assertSame($phonenumber0, $contact->phoneNumber(0));
+        $this->assertNull($contact->phoneNumber(1));
+        $this->assertSame($address0, $contact->address(0));
+        $this->assertNull($contact->address(1));
 
         $xmlstring = $contact->render();
         $this->assertEquals(trim(file_get_contents(__DIR__ . '/fixtures/contact.xml')), $xmlstring);
