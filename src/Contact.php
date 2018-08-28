@@ -252,11 +252,11 @@ class Contact
     {
         $dom = $this->getDomDocument();
 
-        $entry = $dom->createElement('entry');
+        $entry = $dom->createElement('atom:entry');
         $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
         $entry->setAttribute('xmlns:gd', 'http://schemas.google.com/g/2005');
 
-        $category = $dom->createElement('category');
+        $category = $dom->createElement('atom:category');
         $category->setAttribute('scheme', 'http://schemas.google.com/g/2005#kind');
         $category->setAttribute('term', 'http://schemas.google.com/contact/2008#contact');
 
