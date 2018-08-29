@@ -97,6 +97,9 @@ abstract class AbstractElement
         if (method_exists($this, 'addPrimaryAttribute')) {
             $this->addPrimaryAttribute($element);
         }
+        if (method_exists($this, 'addExtraAttributes')) {
+            $this->addExtraAttributes($element);
+        }
 
         foreach ($this->attributes as $key => $value) {
             $element->setAttribute($key, $value);

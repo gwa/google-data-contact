@@ -15,6 +15,7 @@ NOTE: Not all fields are currently implemented.
 * `gd:email`
 * `gd:phoneNumber`
 * `gd:structuredPostalAddress`
+* `gd:organization`
 
 ### Annotated example
 
@@ -85,7 +86,7 @@ The following XML is rendered:
     <gd:namePrefix>Dr.</gd:namePrefix>
     <gd:nameSuffix>MD</gd:nameSuffix>
   </gd:name>
-  <content>Lorem ipsum</content>
+  <atom:content type="text">Lorem ipsum</atom:content>
   <gd:email rel="http://schemas.google.com/g/2005#home" primary="true" address="doe@example.org"/>
   <gd:email rel="http://schemas.google.com/g/2005#work" address="doe@example.com"/>
   <gd:phoneNumber rel="http://schemas.google.com/g/2005#home" primary="true">012 3456 789</gd:phoneNumber>

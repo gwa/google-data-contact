@@ -20,8 +20,16 @@ class Note extends AbstractElement
     /**
      * {@inheritdoc}
      */
+    protected function addExtraAttributes(\DOMElement $element)
+    {
+        $element->setAttribute('type', 'text');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getDomElementName()
     {
-        return 'content';
+        return 'atom:content';
     }
 }
