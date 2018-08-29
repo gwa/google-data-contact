@@ -16,4 +16,11 @@
     <gd:region>California</gd:region>
     <gd:country code="US">U.S.A.</gd:country>
   </gd:structuredPostalAddress>
+  <gd:organization rel="http://schemas.google.com/g/2005#other" label="Volunteer" primary="true">
+    <gd:orgName>Google, Inc.</gd:orgName>
+    <gd:orgTitle>Tech Writer</gd:orgTitle>
+    <gd:orgJobDescription>Writes documentation</gd:orgJobDescription>
+    <gd:orgDepartment>Software Development</gd:orgDepartment>
+    <gd:orgSymbol>GOOG</gd:orgSymbol>
+  </gd:organization>
 </atom:entry>

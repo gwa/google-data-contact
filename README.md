@@ -52,11 +52,23 @@ $contact->addAddress('1600 Amphitheatre Parkway', 'work', true)
     // Arguments: County, Country code (opt.) https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
     ->setCountry('U.S.A.', 'US');
 
+// Add one or more organizations.
+// Arguments: name, type (opt.), is primary? (opt.)
+$contact->addOrganization('Google, Inc.')
+    ->setType('other')
+    ->setLabel('Volunteer')
+    ->setPrimary()
+    ->setTitle('Tech Writer')
+    ->setJobDescription('Writes documentation')
+    ->setDepartment('Software Development')
+    ->setSymbol('GOOG');
+
 // Access existing elements using 0-based index:
 $email1 = $contact->email(0);
 $email2 = $contact->email(1);
 $phonenumber1 = $contact->phoneNumber(0);
 $address1 = $contact->address(0);
+$organization1 = $contact->organization(0);
 
 // Render as XML.
 $xmlstring = $contact->render();
@@ -65,8 +77,8 @@ $xmlstring = $contact->render();
 The following XML is rendered:
 
 ```xml
-<entry xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
-  <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/contact/2008#contact"/>
+<atom:entry xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
+  <atom:category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/contact/2008#contact"/>
   <gd:name>
     <gd:givenName>John</gd:givenName>
     <gd:familyName>Doe</gd:familyName>
@@ -83,5 +95,12 @@ The following XML is rendered:
     <gd:region>California</gd:region>
     <gd:country code="US">U.S.A.</gd:country>
   </gd:structuredPostalAddress>
-</entry>
+  <gd:organization rel="http://schemas.google.com/g/2005#other" label="Volunteer" primary="true">
+    <gd:orgName>Google, Inc.</gd:orgName>
+    <gd:orgTitle>Tech Writer</gd:orgTitle>
+    <gd:orgJobDescription>Writes documentation</gd:orgJobDescription>
+    <gd:orgDepartment>Software Development</gd:orgDepartment>
+    <gd:orgSymbol>GOOG</gd:orgSymbol>
+  </gd:organization>
+</atom:entry>
 ```

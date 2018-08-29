@@ -40,6 +40,11 @@ class Contact
     private $addresses = [];
 
     /**
+     * @var []Organization
+     */
+    private $organizations = [];
+
+    /**
      * Set the contact's name
      *
      * @param string $familyName
@@ -176,6 +181,35 @@ class Contact
     }
 
     /**
+     * @param string $name
+     * @param string $type
+     * @param boolean $primary
+     *
+     * @return Organization
+     */
+    public function addOrganization($name, $type = '', $primary = false)
+    {
+        $organization = new Organization();
+        $organization->setName($name);
+
+        $this->handleTypedPrimary($organization, $type, $primary);
+        $this->organizations[] = $organization;
+
+        return $organization;
+    }
+
+    /**
+     * @param int $index
+     * @return Organization|NULL
+     */
+    public function organization($index)
+    {
+        return array_key_exists($index, $this->organizations) ?
+            $this->organizations[$index] :
+            null;
+    }
+
+    /**
      * @param AbstractElement $element
      * @param string $type
      * @param boolean $primary
@@ -240,6 +274,11 @@ class Contact
         // Add addresses.
         foreach ($this->addresses as $address) {
             $address->createAndAppendDomElement($entry);
+        }
+
+        // Add organizations.
+        foreach ($this->organizations as $organization) {
+            $organization->createAndAppendDomElement($entry);
         }
 
         return $dom->saveXML($entry);

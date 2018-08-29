@@ -91,6 +91,9 @@ abstract class AbstractElement
         if (method_exists($this, 'addTypeAttribute')) {
             $this->addTypeAttribute($element);
         }
+        if (method_exists($this, 'addLabelAttribute')) {
+            $this->addLabelAttribute($element);
+        }
         if (method_exists($this, 'addPrimaryAttribute')) {
             $this->addPrimaryAttribute($element);
         }
