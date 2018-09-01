@@ -292,7 +292,7 @@ class Contact
         $dom = $this->getDomDocument();
 
         $entry = $dom->createElement('atom:entry');
-        $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
+        $entry->setAttribute('xmlns:atom', 'http://www.w3.org/2005/Atom');
         $entry->setAttribute('xmlns:gd', 'http://schemas.google.com/g/2005');
 
         $category = $dom->createElement('atom:category');
