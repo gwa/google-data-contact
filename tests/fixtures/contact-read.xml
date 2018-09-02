@@ -1,4 +1,5 @@
-<entry gd:etag="W/&quot;A0EEQHY6fSt7I2A9XBVWGEs.&quot;">
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom" xmlns:batch="http://schemas.google.com/gdata/batch" xmlns:gContact="http://schemas.google.com/contact/2008" xmlns:gd="http://schemas.google.com/g/2005" gd:etag="W/&quot;A0EEQHY6fSt7I2A9XBVWGEs.&quot;">
     <id>http://www.google.com/m8/feeds/contacts/example.com/base/623c70ec0f21715e</id>
     <updated>2018-09-01T07:37:20.038Z</updated>
     <app:edited xmlns:app="http://www.w3.org/2007/app">2018-09-01T07:37:20.038Z</app:edited>

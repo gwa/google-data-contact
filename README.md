@@ -170,7 +170,7 @@ The XML for feed looks as follows (source: https://developers.google.com/admin-s
 </feed>
 ```
 
-Given the XML string, a `Contact` instance can be created using the `ContactFactory`.
+Given the XML string, `Contact` instances can be created using the `ContactFactory`.
 
 ```php
 use Gwa\GoogleContact\ContactFactory;
@@ -178,4 +178,12 @@ use Gwa\GoogleContact\ContactFactory;
 $factory = new ContactFactory();
 // XML above is in $xml. Returns an array of Contact objects.
 $contacts = $factory->createFromFeedXmlString($xml);
+```
+
+Given the XML for single entry, a single `Contact` instance can be created.
+
+```php
+$factory = new ContactFactory();
+// XML above is in $xml. Returns a single Contact object.
+$contact = $factory->createFromXmlString($xml);
 ```

@@ -39,11 +39,6 @@ class ContactFactory
      */
     public function createFromXmlString($xml)
     {
-        // Wrap in a root "feed" element with namespaces.
-        $xml = sprintf(
-            '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">%s</feed>',
-            $xml
-        );
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($xml);
 
