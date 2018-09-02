@@ -1,0 +1,37 @@
+<entry gd:etag="W/&quot;A0EEQHY6fSt7I2A9XBVWGEs.&quot;">
+    <id>http://www.google.com/m8/feeds/contacts/example.com/base/623c70ec0f21715e</id>
+    <updated>2018-09-01T07:37:20.038Z</updated>
+    <app:edited xmlns:app="http://www.w3.org/2007/app">2018-09-01T07:37:20.038Z</app:edited>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/contact/2008#contact" />
+    <title>Dr. John Doe MD</title>
+    <link rel="http://schemas.google.com/contacts/2008/rel#photo" type="image/*" href="https://www.google.com/m8/feeds/photos/media/example.com/623c70ec0f21715e" />
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/m8/feeds/contacts/example.com/full/623c70ec0f21715e" />
+    <link rel="edit" type="application/atom+xml" href="https://www.google.com/m8/feeds/contacts/example.com/full/623c70ec0f21715e" />
+    <gd:name>
+        <gd:fullName>Dr. John Doe MD</gd:fullName>
+        <gd:namePrefix>Dr.</gd:namePrefix>
+        <gd:givenName>John</gd:givenName>
+        <gd:familyName>Doe</gd:familyName>
+        <gd:nameSuffix>MD</gd:nameSuffix>
+    </gd:name>
+    <gd:email rel="http://schemas.google.com/g/2005#home" address="doe@example.org" primary="true" />
+    <gd:email rel="http://schemas.google.com/g/2005#work" address="doe@example.com"/>
+    <gd:phoneNumber rel="http://schemas.google.com/g/2005#home" primary="true">012 3456 789</gd:phoneNumber>
+    <gd:structuredPostalAddress rel="http://schemas.google.com/g/2005#work" primary="true">
+        <gd:city>Mountain View</gd:city>
+        <gd:street>1600 Amphitheatre Parkway</gd:street>
+        <gd:region>CA</gd:region>
+        <gd:postcode>94043</gd:postcode>
+        <gd:country code="US">U.S.A.</gd:country>
+        <gd:formattedAddress>
+            1600 Amphitheatre Pkwy Mountain View
+        </gd:formattedAddress>
+    </gd:structuredPostalAddress>
+    <gd:organization rel="http://schemas.google.com/g/2005#other" label="Volunteer" primary="true">
+        <gd:orgName>Google, Inc.</gd:orgName>
+        <gd:orgTitle>Tech Writer</gd:orgTitle>
+        <gd:orgJobDescription>Writes documentation</gd:orgJobDescription>
+        <gd:orgDepartment>Software Development</gd:orgDepartment>
+        <gd:orgSymbol>GOOG</gd:orgSymbol>
+    </gd:organization>
+</entry>

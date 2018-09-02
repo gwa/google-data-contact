@@ -46,6 +46,14 @@ abstract class AbstractElement
     }
 
     /**
+     * @return string|NULL
+     */
+    public function getAttribute($key)
+    {
+        return array_key_exists($key, $this->attributes) ? $this->attributes[$key] : NULL;
+    }
+
+    /**
      * @param string $key
      * @param string $value
      *
@@ -55,6 +63,14 @@ abstract class AbstractElement
     {
         $this->attributes[$key] = $value;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 
     /**

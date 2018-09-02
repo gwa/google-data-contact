@@ -42,6 +42,14 @@ class Organization extends AbstractElement
     private $where;
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * @param string $name
      * @return self
      */
@@ -49,6 +57,14 @@ class Organization extends AbstractElement
     {
         $this->name = $name;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -62,6 +78,14 @@ class Organization extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
      * @param string $department
      * @return self
      */
@@ -69,6 +93,14 @@ class Organization extends AbstractElement
     {
         $this->department = $department;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJobDescription()
+    {
+        return $this->jobDescription;
     }
 
     /**
@@ -82,6 +114,14 @@ class Organization extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getSymbol()
+    {
+        return $this->symbol;
+    }
+
+    /**
      * @param string $symbol
      * @return self
      */
@@ -89,6 +129,14 @@ class Organization extends AbstractElement
     {
         $this->symbol = $symbol;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWhere()
+    {
+        return $this->where;
     }
 
     /**

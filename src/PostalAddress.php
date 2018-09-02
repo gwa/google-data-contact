@@ -41,6 +41,14 @@ class PostalAddress extends AbstractElement
     private $countryCode;
 
     /**
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
      * @param string $street
      * @return self
      */
@@ -48,6 +56,14 @@ class PostalAddress extends AbstractElement
     {
         $this->street = $street;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
     /**
@@ -61,6 +77,14 @@ class PostalAddress extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getPostCode()
+    {
+        return $this->postcode;
+    }
+
+    /**
      * @param string $postcode
      * @return self
      */
@@ -68,6 +92,14 @@ class PostalAddress extends AbstractElement
     {
         $this->postcode = $postcode;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 
     /**
@@ -81,7 +113,25 @@ class PostalAddress extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
      * @param string $country
+     * @param string $countrycode
+     *
      * @return self
      */
     public function setCountry($country, $countrycode = '')

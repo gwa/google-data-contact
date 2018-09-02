@@ -13,6 +13,14 @@ trait TraitHasPrimary
     private $primary = false;
 
     /**
+     * @return boolean
+     */
+    public function getPrimary()
+    {
+        return $this->primary;
+    }
+
+    /**
      * @return self
      */
     public function setPrimary($primary = true)

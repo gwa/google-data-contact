@@ -11,6 +11,14 @@ class Email extends AbstractElement
     use TraitHasType;
 
     /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->getAttribute('address');
+    }
+
+    /**
      * @param string $address
      * @return self
      */

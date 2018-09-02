@@ -33,6 +33,14 @@ class Name extends AbstractElement
     private $nameSuffix;
 
     /**
+     * @return string
+     */
+    public function getFamilyName()
+    {
+        return $this->familyName;
+    }
+
+    /**
      * @param string $familyName
      *
      * @return self
@@ -41,6 +49,14 @@ class Name extends AbstractElement
     {
         $this->familyName = $familyName;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGivenName()
+    {
+        return $this->givenName;
     }
 
     /**
@@ -55,6 +71,14 @@ class Name extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getAdditionalName()
+    {
+        return $this->additionalName;
+    }
+
+    /**
      * @param string $additionalName
      *
      * @return self
@@ -66,6 +90,14 @@ class Name extends AbstractElement
     }
 
     /**
+     * @return string
+     */
+    public function getNamePrefix()
+    {
+        return $this->namePrefix;
+    }
+
+    /**
      * @param string $namePrefix
      *
      * @return self
@@ -74,6 +106,14 @@ class Name extends AbstractElement
     {
         $this->namePrefix = $namePrefix;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameSuffix()
+    {
+        return $this->nameSuffix;
     }
 
     /**

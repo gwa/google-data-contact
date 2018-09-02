@@ -11,6 +11,14 @@ class PhoneNumber extends AbstractElement
     use TraitHasType;
 
     /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->getContent();
+    }
+
+    /**
      * @param string $phoneNumber
      * @return self
      */

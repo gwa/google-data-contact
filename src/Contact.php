@@ -15,6 +15,25 @@ class Contact
     private $document;
 
     /**
+     * The Google ID for this contact.
+     *
+     * @var string
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $etag;
+
+    /**
+     * Format: 2018-09-01T07:37:20.038Z
+     *
+     * @var string
+     */
+    private $updated;
+
+    /**
      * @var Name
      */
     private $name;
@@ -43,6 +62,62 @@ class Contact
      * @var []Organization
      */
     private $organizations = [];
+
+    /**
+     * Get the Google ID.
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the Google ID.
+     *
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Get the ETAG.
+     *
+     * @return string
+     */
+    public function getEtag()
+    {
+        return $this->etag;
+    }
+
+    /**
+     * Set the ETAG.
+     *
+     * @param string $etag
+     */
+    public function setEtag($etag)
+    {
+        $this->etag = $etag;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param string $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
 
     /**
      * Set the contact's name
@@ -113,6 +188,14 @@ class Contact
     }
 
     /**
+     * @return int
+     */
+    public function numEmails()
+    {
+        return count($this->emails);
+    }
+
+    /**
      * @param int $index
      * @return Email|NULL
      */
@@ -138,6 +221,14 @@ class Contact
         $this->phoneNumbers[] = $phonenumber;
 
         return $phonenumber;
+    }
+
+    /**
+     * @return int
+     */
+    public function numPhoneNumbers()
+    {
+        return count($this->phoneNumbers);
     }
 
     /**
@@ -170,6 +261,14 @@ class Contact
     }
 
     /**
+     * @return int
+     */
+    public function numAddresses()
+    {
+        return count($this->addresses);
+    }
+
+    /**
      * @param int $index
      * @return PostalAddress|NULL
      */
@@ -196,6 +295,14 @@ class Contact
         $this->organizations[] = $organization;
 
         return $organization;
+    }
+
+    /**
+     * @return int
+     */
+    public function numOrganizations()
+    {
+        return count($this->organizations);
     }
 
     /**

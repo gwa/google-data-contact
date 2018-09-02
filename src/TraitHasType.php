@@ -13,6 +13,14 @@ trait TraitHasType
     private $type = 'work';
 
     /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * @return self
      */
     public function setType($type)

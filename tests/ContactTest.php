@@ -48,15 +48,6 @@ final class ContactTest extends TestCase
             ->setJobDescription('Writes documentation')
             ->setDepartment('Software Development')
             ->setSymbol('GOOG');
-        /*
-<gd:organization rel="http://schemas.google.com/g/2005#other" label="Volunteer" primary="true"/>
-  <gd:orgName>Google, Inc.</gd:orgName>
-  <gd:orgTitle>Tech Writer</gd:orgTitle>
-  <gd:orgJobDescription>Writes documentation</gd:orgJobDescription>
-  <gd:orgDepartment>Software Development</gd:orgDepartment>
-  <gd:orgSymbol>GOOG</gd:orgSymbol>
-</gd:organization>
-*/
 
         $this->assertSame($email0, $contact->email(0));
         $this->assertSame($email1, $contact->email(1));
