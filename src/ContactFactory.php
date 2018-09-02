@@ -8,6 +8,31 @@ namespace Gwa\GoogleContact;
 class ContactFactory
 {
     /**
+     * Returns an array of Contact instances from feed XML.
+     *
+     * @param string $xml
+     *
+     * @return []Contact
+     */
+    public function createFromFeedXmlString($xml)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($xml);
+
+        $feed = $dom->getElementsByTagName('feed')[0];
+        $entries = $feed->getElementsByTagName('entry');
+        $contacts = [];
+
+        for ($i=0, $l=$entries->length; $i<$l; $i++) {
+            $contacts[] = $this->createFromDomElement($entries[$i]);
+        }
+
+        return $contacts;
+    }
+
+    /**
+     * Return a single Contact instance from an "entry" XML fragment.
+     *
      * @param string $xml
      *
      * @return Contact
@@ -40,13 +65,27 @@ class ContactFactory
         $links = $element->getElementsByTagName('link');
         if ($len = $links->length) {
             for ($i=0; $i < $len; $i++) {
-                if ($links[$i]->getAttribute('rel') === 'self') {
+                $rel = $links[$i]->getAttribute('rel');
+                $href = $links[$i]->getAttribute('href');
+
+                if ($rel === 'self') {
+                    $contact->setLinkSelf($href);
+
                     // Extract ID.
                     $pattern = '/\/([a-z0-9]+)$/';
-                    if (preg_match($pattern, $links[$i]->getAttribute('href'), $matches)) {
+                    if (preg_match($pattern, $href, $matches)) {
                         $contact->setId($matches[1]);
                     }
+
+                    continue;
                 }
+
+                if ($rel === 'edit') {
+                    $contact->setLinkEdit($href);
+                    continue;
+                }
+
+                // TODO Handle image link.
             }
         }
 

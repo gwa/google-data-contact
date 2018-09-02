@@ -34,6 +34,16 @@ class Contact
     private $updated;
 
     /**
+     * @var string
+     */
+    private $linkSelf;
+
+    /**
+     * @var string
+     */
+    private $linkEdit;
+
+    /**
      * @var Name
      */
     private $name;
@@ -81,6 +91,38 @@ class Contact
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkSelf()
+    {
+        return $this->linkSelf;
+    }
+
+    /**
+     * @param string $linkSelf
+     */
+    public function setLinkSelf($linkSelf)
+    {
+        $this->linkSelf = $linkSelf;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkEdit()
+    {
+        return $this->linkEdit;
+    }
+
+    /**
+     * @param string $linkEdit
+     */
+    public function setLinkEdit($linkEdit)
+    {
+        $this->linkEdit = $linkEdit;
     }
 
     /**

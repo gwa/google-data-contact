@@ -25,6 +25,8 @@ final class ContactFactoryTest extends TestCase
         $this->assertEquals('623c70ec0f21715e', $contact->getId());
         $this->assertEquals('W/"A0EEQHY6fSt7I2A9XBVWGEs."', $contact->getEtag());
         $this->assertEquals('2018-09-01T07:37:20.038Z', $contact->getUpdated());
+        $this->assertEquals('https://www.google.com/m8/feeds/contacts/example.com/full/623c70ec0f21715e', $contact->getLinkSelf());
+        $this->assertEquals('https://www.google.com/m8/feeds/contacts/example.com/full/abcdefg123456789', $contact->getLinkEdit());
 
         $this->assertEquals('Dr.', $contact->name()->getNamePrefix());
         $this->assertEquals('John', $contact->name()->getGivenName());
@@ -60,5 +62,16 @@ final class ContactFactoryTest extends TestCase
         $this->assertEquals('Writes documentation', $contact->organization(0)->getJobDescription());
         $this->assertEquals('Software Development', $contact->organization(0)->getDepartment());
         $this->assertEquals('GOOG', $contact->organization(0)->getSymbol());
+    }
+
+    public function testCreateFromFeedXML()
+    {
+        $xml = file_get_contents(__DIR__ . '/fixtures/feed.xml');
+        $factory = new ContactFactory();
+        $contacts = $factory->createFromFeedXmlString($xml);
+
+        $this->assertEquals('array', gettype($contacts));
+        $this->assertEquals(1, count($contacts));
+        $this->assertEquals('623c70ec0f21715e', $contacts[0]->getId());
     }
 }
