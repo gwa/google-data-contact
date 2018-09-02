@@ -22,7 +22,7 @@ final class ContactFactoryTest extends TestCase
 
         $this->assertInstanceOf(Contact::class, $contact);
 
-        $this->assertEquals('623c70ec0f21715e', $contact->getId());
+        $this->assertEquals('http://www.google.com/m8/feeds/contacts/example.com/base/623c70ec0f21715e', $contact->getId());
         $this->assertEquals('W/"A0EEQHY6fSt7I2A9XBVWGEs."', $contact->getEtag());
         $this->assertEquals('2018-09-01T07:37:20.038Z', $contact->getUpdated());
         $this->assertEquals('https://www.google.com/m8/feeds/contacts/example.com/full/623c70ec0f21715e', $contact->getLinkSelf());
@@ -62,6 +62,9 @@ final class ContactFactoryTest extends TestCase
         $this->assertEquals('Writes documentation', $contact->organization(0)->getJobDescription());
         $this->assertEquals('Software Development', $contact->organization(0)->getDepartment());
         $this->assertEquals('GOOG', $contact->organization(0)->getSymbol());
+
+        // Test render.
+        $xml = $contact->render();
     }
 
     public function testCreateFromFeedXML()
@@ -72,6 +75,6 @@ final class ContactFactoryTest extends TestCase
 
         $this->assertEquals('array', gettype($contacts));
         $this->assertEquals(1, count($contacts));
-        $this->assertEquals('623c70ec0f21715e', $contacts[0]->getId());
+        $this->assertEquals('http://www.google.com/m8/feeds/contacts/example.com/base/623c70ec0f21715e', $contacts[0]->getId());
     }
 }

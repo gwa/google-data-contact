@@ -57,6 +57,11 @@ class ContactFactory
         $contact = new Contact();
 
         // ID.
+        $id = $element->getElementsByTagName('id');
+        if ($id->length) {
+            $contact->setId($id[0]->nodeValue);
+        }
+
         $links = $element->getElementsByTagName('link');
         if ($len = $links->length) {
             for ($i=0; $i < $len; $i++) {
@@ -65,13 +70,6 @@ class ContactFactory
 
                 if ($rel === 'self') {
                     $contact->setLinkSelf($href);
-
-                    // Extract ID.
-                    $pattern = '/\/([a-z0-9]+)$/';
-                    if (preg_match($pattern, $href, $matches)) {
-                        $contact->setId($matches[1]);
-                    }
-
                     continue;
                 }
 

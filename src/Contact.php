@@ -400,6 +400,13 @@ class Contact
         $entry = $this->createEntryElement();
         $dom->appendChild($entry);
 
+        // Add ID.
+        if (isset($this->id)) {
+            $id = $dom->createElement('id');
+            $id->nodeValue = $this->id;
+            $entry->appendChild($id);
+        }
+
         // Add name.
         if (isset($this->name)) {
             $this->name->createAndAppendDomElement($entry);
