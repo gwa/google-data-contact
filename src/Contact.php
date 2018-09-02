@@ -450,6 +450,9 @@ class Contact
         $entry = $dom->createElement('atom:entry');
         $entry->setAttribute('xmlns:atom', 'http://www.w3.org/2005/Atom');
         $entry->setAttribute('xmlns:gd', 'http://schemas.google.com/g/2005');
+        if ($this->etag) {
+            $entry->setAttribute('gd:etag', $this->etag);
+        }
 
         $category = $dom->createElement('atom:category');
         $category->setAttribute('scheme', 'http://schemas.google.com/g/2005#kind');
