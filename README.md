@@ -17,7 +17,9 @@ NOTE: Not all fields are currently implemented.
 * `gd:structuredPostalAddress`
 * `gd:organization`
 
-### Annotated example
+### Creating a Contact from scratch
+
+Annotated example:
 
 ```php
 use Gwa\GoogleContact\Contact;
@@ -104,4 +106,76 @@ The following XML is rendered:
     <gd:orgSymbol>GOOG</gd:orgSymbol>
   </gd:organization>
 </atom:entry>
+```
+
+### Creating from XML return from the Google Domain Shared Contacts API
+
+The XML for feed looks as follows (source: https://developers.google.com/admin-sdk/domain-shared-contacts/)
+
+```xml
+<feed xmlns='http://www.w3.org/2005/Atom'
+    xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/'
+    xmlns:gd='http://schemas.google.com/g/2005'
+    xmlns:gContact='http://schemas.google.com/contact/2008'
+    xmlns:batch='http://schemas.google.com/gdata/batch'>
+  <id>https://www.google.com/m8/feeds/contacts/example.com/base</id>
+  <updated>2008-03-05T12:36:38.836Z</updated>
+  <category scheme='http://schemas.google.com/g/2005#kind'
+    term='http://schemas.google.com/contact/2008#contact' />
+  <title type='text'>example.com's Contacts</title>
+  <link rel='http://schemas.google.com/g/2005#feed'
+    type='application/atom+xml'
+    href='https://www.google.com/m8/feeds/contacts/example.com/full' />
+  <link rel='http://schemas.google.com/g/2005#post'
+    type='application/atom+xml'
+    href='https://www.google.com/m8/feeds/contacts/example.com/full' />
+  <link rel='http://schemas.google.com/g/2005#batch'
+    type='application/atom+xml'
+    href='https://www.google.com/m8/feeds/contacts/example.com/full/batch' />
+  <link rel='self' type='application/atom+xml'
+    href='https://www.google.com/m8/feeds/contacts/example.com/full?max-results=25' />
+  <author>
+    <name>example.com</name>
+    <email>example.com</email>
+  </author>
+  <generator version='1.0' uri='https://www.google.com/m8/feeds/contacts'>
+    Contacts
+  </generator>
+  <openSearch:totalResults>1</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <entry>
+    <id>
+      https://www.google.com/m8/feeds/contacts/example.com/base/c9012de
+    </id>
+    <updated>2008-03-05T12:36:38.835Z</updated>
+    <category scheme='http://schemas.google.com/g/2005#kind'
+      term='http://schemas.google.com/contact/2008#contact' />
+    <title type='text'>Fitzgerald</title>
+    <gd:name>
+      <gd:fullName>Fitzgerald</gd:fullName>
+    </gd:name>
+    <link rel="http://schemas.google.com/contacts/2008/rel#photo" type="image/*"
+      href="http://google.com/m8/feeds/photos/media/example.com/c9012de"/>
+    <link rel='self' type='application/atom+xml'
+      href='https://www.google.com/m8/feeds/contacts/example.com/full/c9012de' />
+    <link rel='edit' type='application/atom+xml'
+      href='https://www.google.com/m8/feeds/contacts/example.com/full/c9012de/1204720598835000' />
+    <gd:phoneNumber rel='http://schemas.google.com/g/2005#home'
+      primary='true'>
+      456
+    </gd:phoneNumber>
+    <gd:extendedProperty name="pet" value="hamster" />
+  </entry>
+</feed>
+```
+
+Given the XML string, a `Contact` instance can be created using the `ContactFactory`.
+
+```php
+use Gwa\GoogleContact\ContactFactory;
+
+$factory = new ContactFactory();
+// XML above is in $xml. Returns an array of Contact objects.
+$contacts = $factory->createFromFeedXmlString($xml);
 ```
